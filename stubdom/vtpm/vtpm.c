@@ -280,7 +280,7 @@ int parse_cmd_line(int argc, char** argv)
    char* logstr = NULL;
    /* Parse the command strings */
    for(unsigned int i = 1; i < argc; ++i) {
-      if (sscanf(argv[i], "loglevel=%25s", sval) == 1){
+      if (sscanf(argv[i], "loglevel=%24s", sval) == 1){
 	 if (!strcmp(sval, "debug")) {
 	    opt_args.loglevel = TPM_LOG_DEBUG;
 	    logstr = "debug";
