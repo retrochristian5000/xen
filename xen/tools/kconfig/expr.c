@@ -807,28 +807,28 @@ struct expr *expr_transform(struct expr *e)
 			if (e->left.expr->left.sym == &symbol_yes) {
 				// !'y' -> 'n'
 				tmp = e->left.expr;
-				free(e);
-				e = tmp;
 				e->type = E_SYMBOL;
 				e->left.sym = &symbol_no;
+				e->right.sym = NULL;
+				free(tmp);
 				break;
 			}
 			if (e->left.expr->left.sym == &symbol_mod) {
 				// !'m' -> 'm'
 				tmp = e->left.expr;
-				free(e);
-				e = tmp;
 				e->type = E_SYMBOL;
 				e->left.sym = &symbol_mod;
+				e->right.sym = NULL;
+				free(tmp);
 				break;
 			}
 			if (e->left.expr->left.sym == &symbol_no) {
 				// !'n' -> 'y'
 				tmp = e->left.expr;
-				free(e);
-				e = tmp;
 				e->type = E_SYMBOL;
 				e->left.sym = &symbol_yes;
+				e->right.sym = NULL;
+				free(tmp);
 				break;
 			}
 			break;
